@@ -1,0 +1,904 @@
+/* =========================================================
+   LUMAMIND - CHAT
+   CLEAN FINAL VERSION
+========================================================= */
+
+
+/* =========================================================
+   MAIN AREA
+========================================================= */
+
+.chat-area {
+    flex: 1;
+    min-width: 0;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #ffffff;
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.chat-header {
+    flex: 0 0 96px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 20px 38px;
+
+    background: #ffffff;
+    border-bottom: 1px solid #e8eeeb;
+}
+
+.user-info h2 {
+    margin: 0 0 5px;
+
+    color: #073f32;
+
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.35;
+}
+
+.user-info p {
+    margin: 0;
+
+    color: #91a09b;
+
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.daily-feeling-button {
+    padding: 11px 18px;
+
+    background: #f4f8f6;
+    color: #12654e;
+
+    border: 1px solid #dce8e2;
+    border-radius: 13px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.daily-feeling-button:hover {
+    background: #eaf4ef;
+}
+
+
+/* =========================================================
+   CHAT LAYOUT
+========================================================= */
+
+.chat-layout {
+    flex: 1;
+    min-height: 0;
+
+    display: flex;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   MAIN CHAT PANEL
+========================================================= */
+
+.chat-main-panel {
+    flex: 1;
+
+    min-width: 0;
+    min-height: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #ffffff;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   CHAT SCROLL AREA
+========================================================= */
+
+.chat-content {
+    flex: 1;
+
+    min-height: 0;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    padding: 28px 44px 20px;
+
+    scroll-behavior: smooth;
+}
+
+.chat-content::-webkit-scrollbar {
+    width: 5px;
+}
+
+.chat-content::-webkit-scrollbar-thumb {
+    background: #dce7e2;
+
+    border-radius: 999px;
+}
+
+
+/* =========================================================
+   CONVERSATION
+
+   สำคัญ:
+   ห้ามใช้ justify-content: space-between
+   ห้ามใช้ height: 100%
+   ห้ามใช้ flex: 1 กับ message-row
+========================================================= */
+
+.conversation-container {
+    width: 100%;
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+
+    gap: 18px;
+
+    height: auto;
+    min-height: 0;
+}
+
+
+/* =========================================================
+   MESSAGE ROW
+========================================================= */
+
+.message-row {
+    width: 100%;
+
+    display: flex;
+    align-items: flex-start;
+
+    margin: 0;
+    padding: 0;
+
+    flex: 0 0 auto;
+
+    height: auto;
+    min-height: 0;
+}
+
+.user-row {
+    justify-content: flex-end;
+}
+
+.bot-row {
+    justify-content: flex-start;
+}
+
+
+/* =========================================================
+   USER MESSAGE
+========================================================= */
+
+.user-message {
+    display: block;
+
+    width: fit-content;
+    max-width: 560px;
+
+    height: auto;
+    min-height: 0;
+
+    margin: 0;
+    padding: 10px 15px;
+
+    background: #eaf3ef;
+
+    border: 1px solid #dfe9e4;
+    border-radius: 15px 15px 5px 15px;
+
+    color: #294a40;
+
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.55;
+
+    text-align: left;
+
+    white-space: pre-wrap;
+
+    overflow-wrap: break-word;
+    word-break: normal;
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   BOT MESSAGE WRAPPER
+========================================================= */
+
+.bot-message {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    width: fit-content;
+    max-width: 620px;
+
+    height: auto;
+    min-height: 0;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+
+    border: 0;
+
+    box-shadow: none;
+
+    flex: 0 0 auto;
+}
+
+
+/* =========================================================
+   BOT NAME
+========================================================= */
+
+.bot-name {
+    display: block;
+
+    margin: 0 0 6px 2px;
+    padding: 0;
+
+    color: #076047;
+
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+
+/* =========================================================
+   BOT TEXT
+========================================================= */
+
+.bot-text {
+    display: block;
+
+    width: fit-content;
+    max-width: 620px;
+
+    height: auto;
+    min-height: 0;
+
+    margin: 0;
+    padding: 11px 15px;
+
+    background: #ffffff;
+
+    border: 1px solid #e0e9e5;
+    border-radius: 5px 15px 15px 15px;
+
+    color: #294a40;
+
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.65;
+
+    text-align: left;
+
+    white-space: pre-wrap;
+
+    overflow-wrap: break-word;
+    word-break: normal;
+
+    box-shadow:
+        0 4px 14px rgba(25, 65, 52, 0.025);
+}
+
+
+/* =========================================================
+   WELCOME
+========================================================= */
+
+.welcome {
+    width: 100%;
+
+    margin: auto;
+
+    padding: 80px 20px;
+
+    text-align: center;
+}
+
+.welcome h1 {
+    margin: 0 0 10px;
+
+    color: #0b5541;
+
+    font-size: 27px;
+    font-weight: 600;
+}
+
+.welcome p {
+    margin: 0;
+
+    color: #879892;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   TYPING
+========================================================= */
+
+.typing-row {
+    justify-content: flex-start;
+}
+
+.typing-message {
+    width: fit-content;
+
+    max-width: none;
+
+    height: auto;
+}
+
+.typing-message .bot-text {
+    display: inline-flex;
+
+    width: auto;
+
+    min-width: 48px;
+    min-height: 38px;
+
+    padding: 10px 13px;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.typing-indicator {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 4px;
+}
+
+.typing-indicator span {
+    display: block;
+
+    width: 6px;
+    height: 6px;
+
+    background: #8fb8aa;
+
+    border-radius: 50%;
+
+    animation:
+        lumamindTyping 1.2s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+@keyframes lumamindTyping {
+
+    0%,
+    60%,
+    100% {
+        transform: translateY(0);
+
+        opacity: 0.4;
+    }
+
+    30% {
+        transform: translateY(-3px);
+
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   MESSAGE INPUT
+========================================================= */
+
+.message-area {
+    flex: 0 0 auto;
+
+    padding: 10px 34px 13px;
+
+    background: #ffffff;
+}
+
+.message-input-container {
+    width: 100%;
+    max-width: 900px;
+
+    margin: 0 auto;
+}
+
+.message-box {
+    width: 100%;
+
+    min-height: 56px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 6px 7px 6px 18px;
+
+    background: #ffffff;
+
+    border: 1px solid #a9d0c2;
+    border-radius: 17px;
+}
+
+.message-box:focus-within {
+    border-color: #5da78d;
+
+    box-shadow:
+        0 0 0 3px rgba(83, 156, 131, 0.08);
+}
+
+.message-box input {
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 0;
+
+    background: transparent;
+
+    border: 0;
+    outline: none;
+
+    color: #294a40;
+
+    font-size: 14px;
+}
+
+.message-box input::placeholder {
+    color: #a5b2ad;
+}
+
+.send-button {
+    flex-shrink: 0;
+
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    background: #12654e;
+    color: #ffffff;
+
+    border: 0;
+    border-radius: 13px;
+
+    font-size: 17px;
+
+    cursor: pointer;
+}
+
+.send-button:hover {
+    background: #0b5944;
+}
+
+.send-button:active {
+    transform: scale(0.96);
+}
+
+.send-button:disabled {
+    opacity: 0.55;
+
+    cursor: default;
+}
+
+.notice {
+    margin: 7px 0 0;
+
+    color: #a0ada8;
+
+    font-size: 10px;
+    line-height: 1.4;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   RIGHT PANEL
+========================================================= */
+
+.right-panel {
+    width: 300px;
+    min-width: 300px;
+
+    padding: 28px 20px;
+
+    background: #fcfdfc;
+
+    border-left: 1px solid #e8eeeb;
+
+    overflow-y: auto;
+}
+
+
+/* =========================================================
+   FEELING JAR
+========================================================= */
+
+.feeling-jar-card {
+    width: 100%;
+
+    padding: 27px 20px 20px;
+
+    background: #ffffff;
+
+    border: 1px solid #dfe8e3;
+    border-radius: 20px;
+
+    text-align: center;
+
+    box-shadow:
+        0 8px 24px rgba(30, 65, 55, 0.025);
+}
+
+.feeling-jar-card h3 {
+    margin: 0 0 9px;
+
+    color: #075c45;
+
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.feeling-jar-card h4 {
+    margin: 0 0 7px;
+
+    color: #42675d;
+
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.feeling-jar-card p {
+    margin: 0;
+
+    color: #96a49f;
+
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   JAR
+========================================================= */
+
+.jar-visual {
+    position: relative;
+
+    width: 145px;
+    height: 190px;
+
+    margin: 22px auto 17px;
+}
+
+.jar-lid {
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    z-index: 3;
+
+    width: 82px;
+    height: 25px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #edf4f0,
+            #dbe9e2
+        );
+
+    border: 1px solid #bcd2c8;
+    border-radius: 11px;
+}
+
+.jar-body {
+    position: absolute;
+
+    left: 50%;
+    bottom: 0;
+
+    transform: translateX(-50%);
+
+    width: 120px;
+    height: 165px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.96),
+            rgba(225, 246, 235, 0.86)
+        );
+
+    border: 2px solid #b9d1c6;
+    border-radius: 30px 30px 39px 39px;
+}
+
+.jar-glow {
+    position: absolute;
+
+    left: 50%;
+    bottom: 13px;
+
+    transform: translateX(-50%);
+
+    width: 88px;
+    height: 45px;
+
+    background: rgba(151, 214, 176, 0.28);
+
+    border-radius: 50%;
+
+    filter: blur(12px);
+}
+
+.jar-heart {
+    position: absolute;
+
+    top: 73px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    color: #50a874;
+
+    font-size: 25px;
+}
+
+.jar-spark {
+    position: absolute;
+
+    color: #69bc8d;
+
+    font-size: 10px;
+}
+
+.jar-spark.one {
+    top: 61px;
+    left: 27px;
+}
+
+.jar-spark.two {
+    top: 83px;
+    right: 24px;
+}
+
+.jar-spark.three {
+    bottom: 32px;
+    left: 39px;
+}
+
+
+/* =========================================================
+   JAR BUTTON
+========================================================= */
+
+.jar-action-button {
+    width: 100%;
+
+    min-height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 16px;
+
+    background: #12654e;
+    color: #ffffff;
+
+    border: 0;
+    border-radius: 13px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.jar-action-button:hover {
+    background: #0b5944;
+}
+
+.jar-dashboard-link {
+    display: inline-block;
+
+    margin-top: 15px;
+
+    color: #66847b;
+
+    font-size: 11px;
+}
+
+.jar-dashboard-link:hover {
+    color: #12654e;
+}
+
+
+/* =========================================================
+   IMPORTANT LAYOUT LOCK
+   ป้องกันข้อความยืดหลัง reload / กลับจากหน้าอื่น
+========================================================= */
+
+.chat-content .conversation-container {
+    height: auto !important;
+    min-height: 0 !important;
+
+    justify-content: flex-start !important;
+    align-content: flex-start !important;
+}
+
+.chat-content .message-row {
+    flex-grow: 0 !important;
+    flex-shrink: 0 !important;
+
+    height: auto !important;
+    min-height: 0 !important;
+}
+
+.chat-content .user-message,
+.chat-content .bot-message,
+.chat-content .bot-text {
+    height: auto !important;
+
+    min-height: 0 !important;
+}
+
+.chat-content .bot-message {
+    flex-grow: 0 !important;
+    flex-shrink: 0 !important;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1150px) {
+
+    .right-panel {
+        width: 270px;
+        min-width: 270px;
+    }
+
+    .chat-content {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+
+
+@media (max-width: 950px) {
+
+    .right-panel {
+        display: none;
+    }
+
+    .chat-header {
+        padding-left: 28px;
+        padding-right: 28px;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .chat-header {
+        flex-basis: 82px;
+
+        padding: 15px 18px;
+    }
+
+    .user-info h2 {
+        font-size: 18px;
+    }
+
+    .user-info p {
+        display: none;
+    }
+
+    .daily-feeling-button {
+        padding: 9px 12px;
+
+        font-size: 11px;
+    }
+
+    .chat-content {
+        padding: 24px 16px 20px;
+    }
+
+    .user-message {
+        max-width: 80%;
+
+        font-size: 13px;
+    }
+
+    .bot-message,
+    .bot-text {
+        max-width: 85%;
+    }
+
+    .message-area {
+        padding: 9px 14px 11px;
+    }
+
+    .message-box {
+        min-height: 52px;
+    }
+
+    .send-button {
+        width: 40px;
+        height: 40px;
+    }
+}
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}

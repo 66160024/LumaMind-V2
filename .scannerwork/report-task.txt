@@ -1,0 +1,6 @@
+projectKey=lumamind_v2
+serverUrl=http://localhost:9000
+serverVersion=26.9.0.129388
+dashboardUrl=http://localhost:9000/dashboard?id=lumamind_v2
+ceTaskId=fd2ee24e-6bba-4566-ab94-7db1b463b471
+ceTaskUrl=http://localhost:9000/api/ce/task?id=fd2ee24e-6bba-4566-ab94-7db1b463b471

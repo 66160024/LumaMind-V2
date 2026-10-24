@@ -1,0 +1,52 @@
+[
+  {
+    "document_id": "DOC001",
+    "title": "คู่มือการจัดการและคลายความเครียด",
+    "organization": "กรมสุขภาพจิต กระทรวงสาธารณสุข",
+    "year": "ไม่ระบุ",
+    "audience": "working_age",
+    "topic": "stress_management",
+    "source_url": "https://dmhpd.dmh.go.th/",
+    "file_path": "data/raw_sources/dmh_stress_management.pdf"
+  },
+  {
+    "document_id": "DOC002",
+    "title": "การดูแลสุขภาพจิตวัยทำงาน",
+    "organization": "กรมสุขภาพจิต กระทรวงสาธารณสุข",
+    "year": "2018",
+    "audience": "working_age",
+    "topic": "mental_wellbeing",
+    "source_url": "https://mhc7.dmh.go.th/",
+    "file_path": "data/raw_sources/dmh_working_age_guide.pdf"
+  },
+  {
+    "document_id": "DOC003",
+    "title": "สุขภาพจิตวัยทำงาน",
+    "organization": "กรมสุขภาพจิต กระทรวงสาธารณสุข",
+    "year": "ไม่ระบุ",
+    "audience": "working_age",
+    "topic": "work_stress",
+    "source_url": "https://mhc6.dmh.go.th/",
+    "file_path": "data/raw_sources/dmh_working_age_mental_health.pdf"
+  },
+  {
+    "document_id": "DOC004",
+    "title": "Doing What Matters in Times of Stress: An Illustrated Guide",
+    "organization": "World Health Organization",
+    "year": "2020",
+    "audience": "general",
+    "topic": "stress_management",
+    "source_url": "https://www.who.int/publications/i/item/9789240003927",
+    "file_path": "data/raw_sources/who_stress_guide.pdf"
+  },
+  {
+    "document_id": "DOC005",
+    "title": "คู่มือดูแลสุขภาพใจสำหรับเยาวชน",
+    "organization": "UNICEF Thailand",
+    "year": "2021",
+    "audience": "youth",
+    "topic": "mental_wellbeing",
+    "source_url": "https://www.unicef.org/thailand/th/reports/คู่มือดูแลสุขภาพใจสำหรับเยาวชน",
+    "file_path": "data/raw_sources/unicef_youth_mental_health.pdf"
+  }
+]

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>สร้างบัญชี | LumaMind</title>
+
+    <!-- Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/register.css') }}"
+    >
+</head>
+
+
+<body>
+
+<div class="register-page">
+
+
+    <!-- =====================================
+         LEFT SIDE
+    ====================================== -->
+
+    <section class="brand-section">
+
+        <header class="topbar">
+
+            <div class="logo">
+
+                <span class="logo-mark">
+                    ◆
+                </span>
+
+                <span>
+                    LumaMind
+                </span>
+
+            </div>
+
+        </header>
+
+
+        <div class="hero-content">
+
+
+            <div class="safe-badge">
+
+                <span class="safe-dot"></span>
+
+                พื้นที่ปลอดภัยของคุณ
+
+            </div>
+
+
+            <h1>
+
+                <span class="brand-name">
+
+                    Luma<span>Mind</span>
+
+                </span>
+
+
+                <span class="hero-title">
+
+                    เริ่มต้นพื้นที่เล็ก ๆ
+
+                </span>
+
+
+                <span class="hero-soft">
+
+                    ที่เป็นของคุณ
+
+                </span>
+
+            </h1>
+
+
+            <p class="hero-description">
+
+                สร้างพื้นที่สำหรับพูดคุย บันทึกความรู้สึก
+                <br>
+
+                และค่อย ๆ มองเห็นเรื่องราวของตัวเองในแต่ละวัน
+
+            </p>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         RIGHT SIDE
+    ====================================== -->
+
+    <section class="register-section">
+
+
+        <div class="register-card">
+
+
+            <!-- HEADER -->
+
+            <div class="register-heading">
+
+                <h2>
+                    สร้างบัญชี
+                </h2>
+
+                <p>
+                    เริ่มต้นใช้งาน LumaMind
+                    <br>
+                    และสร้างพื้นที่ของคุณ
+                </p>
+
+            </div>
+
+
+
+            <!-- =====================================
+                 FLASH MESSAGE
+            ====================================== -->
+
+            {% with messages = get_flashed_messages() %}
+
+                {% if messages %}
+
+                    <div class="flash-area">
+
+                        {% for message in messages %}
+
+                            <div class="flash-message">
+
+                                {{ message }}
+
+                            </div>
+
+                        {% endfor %}
+
+                    </div>
+
+                {% endif %}
+
+            {% endwith %}
+
+
+
+            <!-- =====================================
+                 REGISTER FORM
+            ====================================== -->
+
+            <form
+                action="{{ url_for('register') }}"
+                method="POST"
+                class="register-form"
+            >
+
+                <!-- CSRF PROTECTION -->
+                <input
+                    type="hidden"
+                    name="csrf_token"
+                    value="{{ csrf_token() }}"
+                >
+
+
+                <!-- USERNAME -->
+
+                <div class="input-group">
+
+                    <label for="username">
+                        ชื่อผู้ใช้
+                    </label>
+
+
+                    <div class="input-wrapper">
+
+
+                        <span class="input-icon">
+                            ◯
+                        </span>
+
+
+                        <input
+                            id="username"
+                            name="username"
+                            type="text"
+                            placeholder="ชื่อที่อยากให้เราเรียกคุณ"
+                            autocomplete="username"
+                            required
+                        >
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- EMAIL -->
+
+                <div class="input-group">
+
+                    <label for="email">
+                        อีเมล
+                    </label>
+
+
+                    <div class="input-wrapper">
+
+
+                        <span class="input-icon">
+                            ✉
+                        </span>
+
+
+                        <input
+                            id="email"
+                            name="email"
+                            type="email"
+                            placeholder="name@example.com"
+                            autocomplete="email"
+                            required
+                        >
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PASSWORD -->
+
+                <div class="input-group">
+
+                    <label for="password">
+                        รหัสผ่าน
+                    </label>
+
+
+                    <div class="input-wrapper">
+
+
+                        <span class="input-icon">
+                            ◇
+                        </span>
+
+
+                        <input
+                            id="password"
+                            name="password"
+                            type="password"
+                            placeholder="สร้างรหัสผ่าน"
+                            autocomplete="new-password"
+                            required
+                        >
+
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            id="passwordToggle"
+                            aria-label="แสดงรหัสผ่าน"
+                        >
+                            ◉
+                        </button>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- BUTTON -->
+
+                <button
+                    type="submit"
+                    class="register-button"
+                >
+
+                    <span>
+                        สร้างบัญชี
+                    </span>
+
+                    <span class="button-arrow">
+                        →
+                    </span>
+
+                </button>
+
+
+            </form>
+
+
+
+            <!-- =====================================
+                 LOGIN LINK
+            ====================================== -->
+
+            <div class="login-link">
+
+                <span>
+                    มีบัญชีอยู่แล้ว?
+                </span>
+
+
+                <a href="{{ url_for('login') }}">
+
+                    เข้าสู่ระบบ
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+</div>
+
+
+
+<!-- =====================================
+     PASSWORD TOGGLE
+====================================== -->
+
+<script>
+
+    const passwordInput =
+        document.getElementById("password");
+
+    const passwordToggle =
+        document.getElementById("passwordToggle");
+
+
+    passwordToggle.addEventListener(
+        "click",
+        function () {
+
+            const hidden =
+                passwordInput.type === "password";
+
+
+            passwordInput.type =
+                hidden
+                    ? "text"
+                    : "password";
+
+
+            passwordToggle.textContent =
+                hidden
+                    ? "○"
+                    : "◉";
+
+        }
+    );
+
+</script>
+
+
+</body>
+</html>

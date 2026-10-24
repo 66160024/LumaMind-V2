@@ -1,0 +1,213 @@
+<aside
+    class="sidebar"
+    id="mainSidebar"
+>
+
+    <!-- =================================================
+         TOP
+    ================================================== -->
+
+    <div class="sidebar-top-row">
+
+        <div class="brand">
+
+            <div class="brand-main">
+                LumaMind
+            </div>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="sidebar-toggle"
+            id="sidebarToggle"
+            aria-label="ปิดแถบด้านข้าง"
+        >
+            <span></span>
+            <span></span>
+        </button>
+
+    </div>
+
+
+    <!-- =================================================
+         NEW CHAT
+    ================================================== -->
+
+    <a
+        href="{{ url_for('new_chat') }}"
+        class="new-chat"
+    >
+
+        <span class="new-chat-plus">
+            +
+        </span>
+
+        <span>
+            แชตใหม่
+        </span>
+
+    </a>
+
+
+    <!-- =================================================
+         HISTORY
+    ================================================== -->
+
+    <div class="history">
+
+        <p class="history-title">
+            ประวัติการสนทนา
+        </p>
+
+
+        <div class="history-list">
+
+            {% for chat in chat_sessions %}
+
+                <div
+                    class="history-row
+                    {% if current_chat and current_chat.session_id == chat.session_id %}
+                        active
+                    {% endif %}"
+                >
+
+                    <a
+                        href="{{ url_for('home', chat_id=chat.session_id) }}"
+                        class="history-item"
+                        title="{{ chat.title }}"
+                    >
+                        {{ chat.title }}
+                    </a>
+
+
+                    <button
+                        type="button"
+                        class="chat-menu-button"
+                        data-menu-id="menu-{{ chat.session_id }}"
+                        aria-label="เมนูบทสนทนา"
+                    >
+                        ⋯
+                    </button>
+
+
+                    <div
+                        class="chat-menu"
+                        id="menu-{{ chat.session_id }}"
+                    >
+
+                        <button
+                            type="button"
+                            class="delete-menu-item"
+                            data-delete-url="{{ url_for('delete_chat', chat_id=chat.session_id) }}"
+                            data-chat-title="{{ chat.title }}"
+                        >
+                            🗑 ลบแชท
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+            {% else %}
+
+                <p class="no-history">
+                    ยังไม่มีประวัติการสนทนา
+                </p>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         TOOLS
+    ================================================== -->
+
+    <div class="tools-card">
+
+
+        <a
+            href="{{ url_for('dashboard') }}"
+            class="sidebar-tool-button"
+        >
+
+            <span class="tool-icon">
+                ♡
+            </span>
+
+            <span class="tool-text">
+
+                <strong>
+                    Feeling Jar
+                </strong>
+
+                <small>
+                    ดูภาพรวมความรู้สึก
+                </small>
+
+            </span>
+
+            <span class="tool-arrow">
+                ›
+            </span>
+
+        </a>
+
+
+        <button
+            type="button"
+            class="sidebar-tool-button"
+            id="openSurveyButton"
+        >
+
+            <span class="tool-icon">
+                ☆
+            </span>
+
+            <span class="tool-text">
+
+                <strong>
+                    ประเมินการใช้งาน
+                </strong>
+
+                <small>
+                    บอกเราว่าประสบการณ์เป็นอย่างไร
+                </small>
+
+            </span>
+
+            <span class="tool-arrow">
+                ›
+            </span>
+
+        </button>
+
+
+    </div>
+
+
+    <!-- =================================================
+         BOTTOM
+    ================================================== -->
+
+    <div class="sidebar-bottom">
+
+        <a
+            href="{{ url_for('logout') }}"
+            class="logout-button"
+        >
+
+            <span>
+                ออกจากระบบ
+            </span>
+
+        </a>
+
+    </div>
+
+</aside>

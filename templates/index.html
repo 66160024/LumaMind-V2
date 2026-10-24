@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>LumaMind</title>
+
+
+    <!-- =========================
+         FONT
+    ========================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =========================
+         STYLES
+    ========================== -->
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/base.css') }}"
+    >
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/chat.css') }}"
+    >
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/feeling.css') }}"
+    >
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/survey.css') }}"
+    >
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/delete-chat.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         APP
+    ========================== -->
+
+    <div class="app">
+
+
+        <!-- SIDEBAR -->
+
+        {% include "components/sidebar.html" %}
+
+
+        <!-- CHAT -->
+
+        {% include "components/chat.html" %}
+
+
+    </div>
+
+
+
+    <!-- =========================
+         MODALS
+    ========================== -->
+
+
+    <!-- SAVE FEELING -->
+
+    {% include "components/feeling_modal.html" %}
+
+
+    <!-- FEELING HISTORY -->
+
+    {% include "components/feeling_history_modal.html" %}
+
+
+    <!-- DELETE FEELING -->
+
+    {% include "components/delete_feeling_modal.html" %}
+
+
+    <!-- DELETE CHAT -->
+
+    {% include "components/delete_chat_modal.html" %}
+
+
+    <!-- SURVEY -->
+
+    {% include "components/survey_modal.html" %}
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script
+        src="{{ url_for('static', filename='js/chat.js') }}"
+    ></script>
+
+
+    <script
+        src="{{ url_for('static', filename='js/feeling.js') }}"
+    ></script>
+
+
+    <script
+        src="{{ url_for('static', filename='js/chat-history.js') }}"
+    ></script>
+
+
+    <script
+        src="{{ url_for('static', filename='js/survey.js') }}"
+    ></script>
+
+
+    <script
+        src="{{ url_for('static', filename='js/sidebar.js') }}"
+    ></script>
+
+
+</body>
+
+</html>

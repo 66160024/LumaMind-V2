@@ -1,0 +1,172 @@
+<main class="chat-area">
+
+    <header class="chat-header">
+
+        <div class="user-info">
+            <h2>สวัสดี {{ username }}</h2>
+            <p>วันนี้เป็นอย่างไรบ้าง? เล่าให้เราฟังได้นะ</p>
+        </div>
+
+        <button
+            type="button"
+            class="daily-feeling-button"
+            id="openFeelingModal"
+        >
+            บันทึกความรู้สึก
+        </button>
+
+    </header>
+
+
+    <div class="chat-layout">
+
+        <section class="chat-main-panel">
+
+            <section
+                class="chat-content"
+                id="chatContent"
+                data-chat-id="{% if current_chat %}{{ current_chat.session_id }}{% endif %}"
+            >
+
+                <div
+                    class="conversation-container"
+                    id="conversationContainer"
+                >
+
+                    {% if messages %}
+
+                        {% for message in messages %}
+
+                            {% if message.sender == "user" %}
+
+                                <div class="message-row user-row">
+                                    <div class="user-message">{{ message.message_text | trim }}</div>
+                                </div>
+
+                            {% else %}
+
+                                <div class="message-row bot-row">
+                                    <div class="bot-message">
+                                        <div class="bot-name">LumaMind</div>
+                                        <div class="bot-text">{{ message.message_text | trim }}</div>
+                                    </div>
+                                </div>
+
+                            {% endif %}
+
+                        {% endfor %}
+
+                    {% else %}
+
+                        <div
+                            class="welcome"
+                            id="welcome"
+                        >
+                            <h1>เริ่มสนทนาได้เลย</h1>
+                            <p>วันนี้มีอะไรที่อยากเล่าให้เราฟังไหม</p>
+                        </div>
+
+                    {% endif %}
+
+                </div>
+
+            </section>
+
+
+            <div class="message-area">
+
+                <div class="message-input-container">
+
+                    <div class="message-box">
+
+                        <label
+                            for="messageInput"
+                            class="sr-only"
+                        >
+                            พิมพ์ข้อความ
+                        </label>
+
+                        <input
+                            id="messageInput"
+                            type="text"
+                            placeholder="พิมพ์ข้อความที่นี่..."
+                            autocomplete="off"
+                            aria-label="พิมพ์ข้อความ"
+                        >
+
+                        <button
+                            class="send-button"
+                            id="sendButton"
+                            type="button"
+                            aria-label="ส่งข้อความ"
+                        >
+                            ➤
+                        </button>
+
+                    </div>
+
+                    <p class="notice">
+                        LumaMind ให้คำแนะนำเบื้องต้น และไม่สามารถทดแทนผู้เชี่ยวชาญด้านสุขภาพจิตได้
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <aside class="right-panel">
+
+            <div class="feeling-jar-card">
+
+                <h3>Feeling Jar</h3>
+
+                <h4>บันทึกความรู้สึกของวันนี้</h4>
+
+                <p>
+                    เก็บรักษาความรู้สึกดี ๆ<br>
+                    เพื่อดูแลใจของคุณในทุกวัน
+                </p>
+
+                <div class="jar-visual">
+
+                    <div class="jar-lid"></div>
+
+                    <div class="jar-body">
+
+                        <div class="jar-glow"></div>
+
+                        <div class="jar-heart">♥</div>
+
+                        <span class="jar-spark one">✦</span>
+                        <span class="jar-spark two">✦</span>
+                        <span class="jar-spark three">✦</span>
+
+                    </div>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="jar-action-button"
+                    onclick="document.getElementById('openFeelingModal').click()"
+                >
+                    <span>บันทึกวันนี้</span>
+                    <span>→</span>
+                </button>
+
+                <a
+                    href="{{ url_for('dashboard') }}"
+                    class="jar-dashboard-link"
+                >
+                    ดูภาพรวมความรู้สึก
+                </a>
+
+            </div>
+
+        </aside>
+
+    </div>
+
+</main>

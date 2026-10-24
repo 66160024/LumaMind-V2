@@ -1,0 +1,605 @@
+/* =========================================================
+   SATISFACTION SURVEY
+========================================================= */
+
+.survey-overlay {
+    position: fixed;
+    inset: 0;
+
+    z-index: 10010;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(21, 55, 45, 0.48);
+
+    backdrop-filter: blur(5px);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease;
+}
+
+
+.survey-overlay.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+
+/* =========================
+   SURVEY BOX
+========================= */
+
+.survey-box {
+    position: relative;
+
+    width: 100%;
+    max-width: 520px;
+
+    padding: 34px;
+
+    background: #ffffff;
+
+    border: 1px solid #e0e9e4;
+    border-radius: 24px;
+
+    text-align: center;
+
+    box-shadow:
+        0 24px 70px
+        rgba(21, 61, 48, 0.22);
+
+    transform:
+        translateY(12px)
+        scale(0.97);
+
+    transition:
+        transform 0.2s ease;
+}
+
+
+.survey-overlay.show
+.survey-box {
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* =========================
+   CLOSE
+========================= */
+
+.survey-close {
+    position: absolute;
+
+    top: 15px;
+    right: 17px;
+
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #f1f5f3;
+
+    color: #66756e;
+
+    font-size: 23px;
+
+    cursor: pointer;
+}
+
+
+.survey-close:hover {
+    background: #e7efeb;
+    color: #183d32;
+}
+
+
+/* =========================
+   STEPS
+========================= */
+
+.survey-step {
+    display: none;
+}
+
+
+.survey-step.active {
+    display: block;
+}
+
+
+/* =========================
+   ICON
+========================= */
+
+.survey-icon {
+    width: 78px;
+    height: 78px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 5px auto 18px;
+
+    background: #e8f3ed;
+
+    border-radius: 50%;
+
+    font-size: 37px;
+}
+
+
+/* =========================
+   TEXT
+========================= */
+
+.survey-box h2 {
+    max-width: 410px;
+
+    margin:
+        0
+        auto
+        12px;
+
+    color: #183d32;
+
+    font-size: 22px;
+    line-height: 1.45;
+}
+
+
+.survey-description {
+    max-width: 390px;
+
+    margin:
+        0
+        auto
+        8px;
+
+    color: #64746d;
+
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+
+.survey-small-text {
+    margin:
+        5px
+        0
+        22px;
+
+    color: #909c96;
+
+    font-size: 12px;
+}
+
+
+/* =========================
+   STEP LABEL
+========================= */
+
+.survey-step-label {
+    display: inline-block;
+
+    margin-bottom: 18px;
+
+    padding:
+        6px
+        12px;
+
+    background: #edf6f1;
+
+    border-radius: 20px;
+
+    color: #4e7968;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+/* =========================
+   STARS
+========================= */
+
+.survey-stars {
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: 10px;
+
+    max-width: 360px;
+
+    margin:
+        25px
+        auto
+        5px;
+}
+
+
+.survey-star {
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    color: #d9dedb;
+
+    font-size: 49px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        color 0.15s ease,
+        transform 0.15s ease;
+}
+
+
+.survey-star:hover {
+    transform:
+        translateY(-3px)
+        scale(1.05);
+}
+
+
+.survey-star.selected {
+    color: #f3c94f;
+}
+
+
+/* =========================
+   RATING NUMBERS
+========================= */
+
+.survey-rating-numbers {
+    max-width: 360px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    margin:
+        5px
+        auto
+        12px;
+
+    color: #7d8983;
+
+    font-size: 11px;
+}
+
+
+/* =========================
+   RATING LABELS
+========================= */
+
+.survey-rating-labels {
+    max-width: 360px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin:
+        0
+        auto
+        17px;
+
+    color: #7d8983;
+
+    font-size: 11px;
+}
+
+
+/* =========================
+   COMMENT
+========================= */
+
+.survey-comment {
+    width: 100%;
+    min-height: 150px;
+
+    display: block;
+
+    margin-top: 20px;
+
+    padding:
+        14px
+        15px;
+
+    resize: vertical;
+
+    border: 1px solid #d7e2dc;
+    border-radius: 14px;
+
+    outline: none;
+
+    background: #fbfcfb;
+
+    color: #26352f;
+
+    font-size: 14px;
+    line-height: 1.6;
+
+    transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease,
+        background 0.15s ease;
+}
+
+
+.survey-comment:focus {
+    background: #ffffff;
+
+    border-color: #6f9a87;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(79, 128, 109, 0.10);
+}
+
+
+.survey-comment::placeholder {
+    color: #a0aaa5;
+}
+
+
+/* =========================
+   CHARACTER COUNT
+========================= */
+
+.survey-character-count {
+    margin-top: 7px;
+
+    text-align: right;
+
+    color: #9aa49f;
+
+    font-size: 11px;
+}
+
+
+/* =========================
+   ERRORS
+========================= */
+
+.survey-error {
+    min-height: 18px;
+
+    margin:
+        12px
+        0
+        0;
+
+    color: #b9564e;
+
+    font-size: 12px;
+}
+
+
+/* =========================
+   ACTIONS
+========================= */
+
+.survey-actions {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+
+.survey-actions-column {
+    flex-direction: column;
+
+    max-width: 290px;
+
+    margin:
+        24px
+        auto
+        0;
+}
+
+
+.survey-primary-button,
+.survey-secondary-button {
+    min-width: 130px;
+
+    padding:
+        12px
+        18px;
+
+    border-radius: 12px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        transform 0.15s ease,
+        border-color 0.15s ease;
+}
+
+
+.survey-primary-button {
+    border: none;
+
+    background: #245c49;
+
+    color: white;
+}
+
+
+.survey-primary-button:hover {
+    background: #1c4d3d;
+
+    transform: translateY(-1px);
+}
+
+
+.survey-primary-button:disabled {
+    opacity: 0.6;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+.survey-secondary-button {
+    border: 1px solid #d5e0da;
+
+    background: #ffffff;
+
+    color: #456258;
+}
+
+
+.survey-secondary-button:hover {
+    background: #f3f8f5;
+
+    border-color: #c4d4cc;
+}
+
+
+/* =========================
+   SUCCESS
+========================= */
+
+.survey-success-icon {
+    width: 85px;
+    height: 85px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin:
+        10px
+        auto
+        22px;
+
+    background: #78c98c;
+
+    border-radius: 50%;
+
+    color: white;
+
+    font-size: 47px;
+    font-weight: 700;
+
+    box-shadow:
+        0 8px 24px
+        rgba(82, 156, 104, 0.18);
+}
+
+
+/* =========================================================
+   SURVEY SIDEBAR BUTTON
+========================================================= */
+
+.survey-sidebar-button {
+    width: 100%;
+
+    padding: 12px;
+
+    margin-bottom: 10px;
+
+    border: 1px solid
+        rgba(255, 255, 255, 0.22);
+
+    border-radius: 10px;
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    color: white;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        transform 0.15s ease;
+}
+
+
+.survey-sidebar-button:hover {
+    background:
+        rgba(255, 255, 255, 0.14);
+
+    transform:
+        translateY(-1px);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .survey-box {
+        padding:
+            30px
+            20px
+            24px;
+    }
+
+
+    .survey-box h2 {
+        font-size: 19px;
+    }
+
+
+    .survey-star {
+        font-size: 39px;
+    }
+
+
+    .survey-stars {
+        gap: 5px;
+    }
+
+
+    .survey-actions {
+        flex-direction: column-reverse;
+    }
+
+
+    .survey-primary-button,
+    .survey-secondary-button {
+        width: 100%;
+    }
+
+}

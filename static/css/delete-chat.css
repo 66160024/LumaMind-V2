@@ -1,0 +1,247 @@
+/* =========================================================
+   LUMAMIND - DELETE CHAT MODAL
+========================================================= */
+
+.delete-modal-overlay {
+    position: fixed;
+    inset: 0;
+
+    z-index: 99999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 24px;
+
+    background: rgba(15, 48, 38, 0.35);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease;
+}
+
+.delete-modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+
+/* =========================================================
+   MODAL BOX
+========================================================= */
+
+.delete-modal-box {
+    width: 100%;
+    max-width: 410px;
+
+    padding: 32px 30px 27px;
+
+    background: #ffffff;
+
+    border: 1px solid #e1ebe6;
+    border-radius: 22px;
+
+    text-align: center;
+
+    box-shadow:
+        0 24px 70px rgba(16, 58, 45, 0.18);
+
+    transform: translateY(8px) scale(0.98);
+
+    transition: transform 0.2s ease;
+}
+
+.delete-modal-overlay.show .delete-modal-box {
+    transform: translateY(0) scale(1);
+}
+
+
+/* =========================================================
+   ICON
+========================================================= */
+
+.delete-modal-icon {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 17px;
+
+    background: #edf7f2;
+
+    border-radius: 18px;
+
+    font-size: 26px;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.delete-modal-box h2 {
+    margin: 0 0 10px;
+
+    color: #174c3e;
+
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   TEXT
+========================================================= */
+
+.delete-modal-box p {
+    margin: 0;
+
+    color: #74867f;
+
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.delete-modal-box p strong {
+    color: #315f52;
+    font-weight: 600;
+}
+
+.delete-modal-box .delete-warning {
+    margin-top: 5px;
+
+    color: #9aa8a3;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.delete-modal-actions {
+    display: flex;
+    align-items: stretch;
+
+    gap: 10px;
+
+    margin-top: 24px;
+}
+
+.delete-modal-actions > button,
+.delete-modal-actions > form {
+    flex: 1;
+}
+
+.delete-modal-actions form {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* =========================================================
+   CANCEL BUTTON
+========================================================= */
+
+.delete-cancel-button {
+    width: 100%;
+    height: 46px;
+
+    padding: 0 16px;
+
+    background: #f3f7f5;
+    color: #55736a;
+
+    border: 1px solid #dfe8e4;
+    border-radius: 13px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.18s ease;
+}
+
+.delete-cancel-button:hover {
+    background: #eaf2ee;
+}
+
+
+/* =========================================================
+   DELETE BUTTON
+========================================================= */
+
+.delete-confirm-button {
+    width: 100%;
+    height: 46px;
+
+    padding: 0 16px;
+
+    background: #b85b5b;
+    color: #ffffff;
+
+    border: 1px solid #b85b5b;
+    border-radius: 13px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 15px rgba(184, 91, 91, 0.12);
+
+    transition: 0.18s ease;
+}
+
+.delete-confirm-button:hover {
+    background: #a94f4f;
+    border-color: #a94f4f;
+}
+
+.delete-confirm-button:active {
+    transform: scale(0.98);
+}
+
+.delete-confirm-button:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 520px) {
+
+    .delete-modal-overlay {
+        padding: 18px;
+    }
+
+    .delete-modal-box {
+        max-width: 360px;
+        padding: 27px 20px 22px;
+    }
+
+    .delete-modal-actions {
+        flex-direction: column-reverse;
+    }
+
+    .delete-modal-actions > button,
+    .delete-modal-actions > form {
+        width: 100%;
+    }
+}

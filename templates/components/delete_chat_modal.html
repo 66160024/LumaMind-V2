@@ -1,0 +1,69 @@
+<div
+    class="delete-modal-overlay"
+    id="deleteModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="deleteModalTitle"
+>
+
+    <div class="delete-modal-box">
+
+        <div class="delete-modal-icon">
+            🌿
+        </div>
+
+
+        <h2 id="deleteModalTitle">
+            ลบบทสนทนานี้ไหม?
+        </h2>
+
+
+        <p>
+            คุณกำลังจะลบ
+            <strong id="deleteChatTitle"></strong>
+        </p>
+
+
+        <p class="delete-warning">
+            เมื่อลบแล้วจะไม่สามารถกู้คืนได้
+        </p>
+
+
+        <div class="delete-modal-actions">
+
+            <button
+                type="button"
+                class="delete-cancel-button"
+                id="cancelDelete"
+            >
+                เก็บไว้ก่อน
+            </button>
+
+
+            <form
+                id="deleteChatForm"
+                method="POST"
+                action=""
+            >
+
+                <input
+                    type="hidden"
+                    name="csrf_token"
+                    value="{{ csrf_token() }}"
+                >
+
+
+                <button
+                    type="submit"
+                    class="delete-confirm-button"
+                >
+                    🗑 ลบบทสนทนา
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

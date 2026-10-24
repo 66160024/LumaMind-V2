@@ -1,0 +1,151 @@
+<!-- =========================
+     FEELING JAR - SAVE MODAL
+========================== -->
+
+<div
+    class="feeling-modal-overlay"
+    id="feelingModal"
+>
+
+    <div class="feeling-modal-box">
+
+        <button
+            type="button"
+            class="feeling-modal-close"
+            id="closeFeelingModal"
+            aria-label="ปิด"
+        >
+            ×
+        </button>
+
+
+        <div class="feeling-modal-icon">
+            🫙
+        </div>
+
+
+        <h2>
+            Feeling Jar
+        </h2>
+
+
+        <p class="feeling-modal-subtitle">
+            วันนี้คุณอยากเก็บอะไรไว้?
+        </p>
+
+
+        <label
+            for="feelingText"
+            class="sr-only"
+        >
+            เขียนความรู้สึกของคุณ
+        </label>
+
+        <textarea
+            id="feelingText"
+            class="feeling-textarea"
+            placeholder="เขียนความรู้สึกของคุณ..."
+            maxlength="1000"
+            aria-label="เขียนความรู้สึกของคุณ"
+        ></textarea>
+
+
+        <div class="feeling-mood-section">
+
+            <p>
+                วันนี้คุณรู้สึกอย่างไร?
+            </p>
+
+
+            <div class="feeling-mood-options">
+
+                <button
+                    type="button"
+                    class="feeling-mood-button"
+                    data-mood="good"
+                >
+                    <span>😊</span>
+                    <small>ดี</small>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="feeling-mood-button"
+                    data-mood="calm"
+                >
+                    <span>😌</span>
+                    <small>สงบ</small>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="feeling-mood-button"
+                    data-mood="neutral"
+                >
+                    <span>😐</span>
+                    <small>เฉย ๆ</small>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="feeling-mood-button"
+                    data-mood="sad"
+                >
+                    <span>😔</span>
+                    <small>เศร้า</small>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="feeling-mood-button"
+                    data-mood="anxious"
+                >
+                    <span>😰</span>
+                    <small>กังวล</small>
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <p
+            class="feeling-error"
+            id="feelingError"
+        ></p>
+
+
+        <p
+            class="feeling-success"
+            id="feelingSuccess"
+        ></p>
+
+
+        <div class="feeling-modal-actions">
+
+            <button
+                type="button"
+                class="feeling-cancel-button"
+                id="cancelFeeling"
+            >
+                ยกเลิก
+            </button>
+
+
+            <button
+                type="button"
+                class="feeling-save-button"
+                id="saveFeeling"
+            >
+                เก็บไว้ 🌿
+            </button>
+
+        </div>
+
+    </div>
+
+</div>

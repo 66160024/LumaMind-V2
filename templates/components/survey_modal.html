@@ -1,0 +1,314 @@
+<!-- =====================================================
+     SATISFACTION SURVEY
+====================================================== -->
+
+<div
+    class="survey-overlay"
+    id="surveyModal"
+>
+
+    <div class="survey-box">
+
+        <button
+            type="button"
+            class="survey-close"
+            id="closeSurveyModal"
+            aria-label="ปิด"
+        >
+            ×
+        </button>
+
+
+        <!-- =================================================
+             STEP 1 : INVITATION
+        ================================================== -->
+
+        <div
+            class="survey-step active"
+            id="surveyStep1"
+        >
+
+            <div class="survey-icon">
+                🌿
+            </div>
+
+            <h2>
+                อยากให้เราพัฒนาให้ดียิ่งขึ้น
+            </h2>
+
+            <p class="survey-description">
+                ช่วยประเมินความพึงพอใจ
+                จากการใช้งาน LumaMind
+                ของคุณหน่อยได้ไหมคะ?
+            </p>
+
+            <p class="survey-small-text">
+                ใช้เวลาเพียง 1 นาทีเท่านั้น
+            </p>
+
+            <div class="survey-actions survey-actions-column">
+
+                <button
+                    type="button"
+                    class="survey-primary-button"
+                    id="startSurveyButton"
+                >
+                    ⭐ ทำแบบประเมิน
+                </button>
+
+                <button
+                    type="button"
+                    class="survey-secondary-button"
+                    id="skipSurveyButton"
+                >
+                    ไว้คราวหน้า
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             STEP 2 : RATING
+        ================================================== -->
+
+        <div
+            class="survey-step"
+            id="surveyStep2"
+        >
+
+            <div class="survey-step-label">
+                ขั้นตอนที่ 1 จาก 2
+            </div>
+
+            <h2>
+                คุณพึงพอใจกับการใช้งาน LumaMind
+                มากน้อยแค่ไหน?
+            </h2>
+
+            <div
+                class="survey-stars"
+                id="surveyStars"
+            >
+
+                <button
+                    type="button"
+                    class="survey-star"
+                    data-rating="1"
+                    aria-label="1 ดาว"
+                >
+                    ★
+                </button>
+
+                <button
+                    type="button"
+                    class="survey-star"
+                    data-rating="2"
+                    aria-label="2 ดาว"
+                >
+                    ★
+                </button>
+
+                <button
+                    type="button"
+                    class="survey-star"
+                    data-rating="3"
+                    aria-label="3 ดาว"
+                >
+                    ★
+                </button>
+
+                <button
+                    type="button"
+                    class="survey-star"
+                    data-rating="4"
+                    aria-label="4 ดาว"
+                >
+                    ★
+                </button>
+
+                <button
+                    type="button"
+                    class="survey-star"
+                    data-rating="5"
+                    aria-label="5 ดาว"
+                >
+                    ★
+                </button>
+
+            </div>
+
+
+            <div class="survey-rating-numbers">
+
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>5</span>
+
+            </div>
+
+
+            <div class="survey-rating-labels">
+
+                <span>
+                    ไม่พึงพอใจเลย
+                </span>
+
+                <span>
+                    พึงพอใจมากที่สุด
+                </span>
+
+            </div>
+
+
+            <p
+                class="survey-error"
+                id="surveyRatingError"
+            ></p>
+
+
+            <div class="survey-actions">
+
+                <button
+                    type="button"
+                    class="survey-secondary-button"
+                    id="surveyBackToIntro"
+                >
+                    ย้อนกลับ
+                </button>
+
+                <button
+                    type="button"
+                    class="survey-primary-button"
+                    id="surveyNextButton"
+                >
+                    ถัดไป
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             STEP 3 : COMMENT
+        ================================================== -->
+
+        <div
+            class="survey-step"
+            id="surveyStep3"
+        >
+
+            <div class="survey-step-label">
+                ขั้นตอนที่ 2 จาก 2
+            </div>
+
+            <h2>
+                มีความคิดเห็นหรือข้อเสนอแนะเพิ่มเติมไหมคะ?
+            </h2>
+
+            <p class="survey-small-text">
+                ไม่บังคับ
+            </p>
+
+
+            <label
+                for="surveyComment"
+                class="sr-only"
+            >
+                ความคิดเห็นเพิ่มเติมเกี่ยวกับ LumaMind
+            </label>
+
+            <textarea
+                id="surveyComment"
+                class="survey-comment"
+                maxlength="500"
+                placeholder="อยากให้ LumaMind ปรับปรุงอะไร...
+หรือมีสิ่งที่คุณชอบเป็นพิเศษบอกเราได้นะคะ 😊"
+                aria-label="ความคิดเห็นเพิ่มเติมเกี่ยวกับ LumaMind"
+            ></textarea>
+
+
+            <div class="survey-character-count">
+
+                <span id="surveyCharacterCount">
+                    0
+                </span>
+
+                / 500
+
+            </div>
+
+
+            <p
+                class="survey-error"
+                id="surveySubmitError"
+            ></p>
+
+
+            <div class="survey-actions">
+
+                <button
+                    type="button"
+                    class="survey-secondary-button"
+                    id="surveyBackButton"
+                >
+                    ย้อนกลับ
+                </button>
+
+                <button
+                    type="button"
+                    class="survey-primary-button"
+                    id="submitSurveyButton"
+                >
+                    ส่งแบบประเมิน
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             STEP 4 : SUCCESS
+        ================================================== -->
+
+        <div
+            class="survey-step"
+            id="surveyStep4"
+        >
+
+            <div class="survey-success-icon">
+                ✓
+            </div>
+
+            <h2>
+                ขอบคุณสำหรับคำแนะนำค่ะ!
+            </h2>
+
+            <p class="survey-description">
+                เราจะนำความคิดเห็นของคุณ
+                ไปพัฒนา LumaMind
+                ให้ดียิ่งขึ้นนะคะ 💚
+            </p>
+
+            <div class="survey-actions survey-actions-column">
+
+                <button
+                    type="button"
+                    class="survey-primary-button"
+                    id="finishSurveyButton"
+                >
+                    ปิด
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

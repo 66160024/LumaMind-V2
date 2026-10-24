@@ -1,0 +1,755 @@
+/* =========================================
+   LUMAMIND - FEELING DASHBOARD
+   CLEAN GREEN VERSION
+   ========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
+    font-family:
+        "Segoe UI",
+        "Noto Sans Thai",
+        Tahoma,
+        sans-serif;
+
+    color: #163d34;
+
+    /* เขียวอ่อน ไล่ลงขาว */
+    background:
+        linear-gradient(
+            135deg,
+            #eef8ed 0%,
+            #f5faf3 38%,
+            #fbfcf9 72%,
+            #ffffff 100%
+        );
+
+    background-attachment: fixed;
+}
+
+
+/* =========================================
+   PAGE
+   ========================================= */
+
+.dashboard-page {
+    width: min(1240px, calc(100% - 48px));
+    margin: 0 auto;
+    padding: 38px 0 60px;
+}
+
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+
+    margin-bottom: 34px;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+
+    margin-bottom: 20px;
+
+    color: #477266;
+    font-size: 14px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.back-button:hover {
+    color: #087052;
+    transform: translateX(-2px);
+}
+
+.dashboard-header h1 {
+    margin: 0 0 7px;
+
+    font-size: 32px;
+    line-height: 1.25;
+
+    color: #064f3d;
+}
+
+.dashboard-header p {
+    margin: 0;
+
+    font-size: 15px;
+    color: #728a83;
+}
+
+.header-user {
+    flex-shrink: 0;
+
+    padding: 10px 18px;
+
+    background: rgba(255, 255, 255, 0.88);
+
+    border: 1px solid #dce9e2;
+    border-radius: 999px;
+
+    color: #225d4d;
+    font-size: 14px;
+    font-weight: 600;
+
+    box-shadow:
+        0 5px 16px rgba(15, 85, 65, 0.05);
+}
+
+
+/* =========================================
+   SUMMARY CARDS
+   ========================================= */
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+
+    margin-bottom: 20px;
+}
+
+.summary-card {
+    position: relative;
+    overflow: hidden;
+
+    min-height: 150px;
+
+    padding: 23px 24px;
+
+    border-radius: 20px;
+    border: 1px solid rgba(55, 120, 95, 0.12);
+
+    box-shadow:
+        0 10px 28px rgba(22, 83, 65, 0.065);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+/* การ์ดที่ 1 - เขียวอ่อน */
+.summary-card:nth-child(1) {
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #f1faed 55%,
+            #e4f4dd 100%
+        );
+}
+
+/* การ์ดที่ 2 - เขียวกลาง */
+.summary-card:nth-child(2) {
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #edf8ef 48%,
+            #d7eedb 100%
+        );
+}
+
+/* การ์ดที่ 3 - เขียวเข้มขึ้น */
+.summary-card:nth-child(3) {
+    background:
+        linear-gradient(
+            135deg,
+            #f8fcf7 0%,
+            #e5f4e7 45%,
+            #cce8d2 100%
+        );
+}
+
+.summary-card:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 14px 34px rgba(18, 88, 65, 0.09);
+}
+
+.summary-label {
+    display: block;
+
+    margin-bottom: 16px;
+
+    color: #627d74;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.summary-value {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    margin-bottom: 8px;
+
+    color: #0b563f;
+    font-size: 25px;
+}
+
+.mood-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 45px;
+    height: 45px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #f0f8e9,
+            #dcefd2
+        );
+
+    border: 1px solid rgba(74, 135, 91, 0.08);
+    border-radius: 14px;
+
+    font-size: 24px;
+}
+
+.summary-number {
+    margin-bottom: 8px;
+
+    color: #075d43;
+
+    font-size: 35px;
+    line-height: 1;
+    font-weight: 750;
+}
+
+.summary-detail {
+    color: #789087;
+    font-size: 13px;
+}
+
+
+/* =========================================
+   MAIN DASHBOARD GRID
+   ========================================= */
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1.7fr 1fr;
+    gap: 20px;
+
+    margin-bottom: 20px;
+}
+
+.dashboard-card {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.97) 0%,
+            rgba(248, 252, 247, 0.97) 100%
+        );
+
+    border: 1px solid rgba(52, 112, 91, 0.12);
+    border-radius: 20px;
+
+    padding: 24px;
+
+    box-shadow:
+        0 10px 30px rgba(21, 79, 61, 0.055);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    margin-bottom: 25px;
+}
+
+.card-header h2 {
+    margin: 0 0 5px;
+
+    color: #0a533f;
+
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.card-header p {
+    margin: 0;
+
+    color: #81958f;
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   WEEK MOOD
+   ========================================= */
+
+.week-placeholder {
+    min-height: 230px;
+
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    align-items: end;
+    gap: 12px;
+
+    padding: 30px 10px 8px;
+}
+
+.day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 13px;
+}
+
+.day-mood {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #f2f9ec,
+            #dcefd3
+        );
+
+    border: 1px solid rgba(74, 133, 88, 0.08);
+
+    font-size: 27px;
+
+    box-shadow:
+        0 5px 14px rgba(35, 90, 60, 0.05);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.day-mood:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 10px 20px rgba(25, 92, 66, 0.11);
+}
+
+.day-mood.empty {
+    background: #f4f7f4;
+    border-color: #edf1ee;
+
+    color: #b6c2bd;
+
+    box-shadow: none;
+
+    font-size: 20px;
+}
+
+.day span {
+    color: #627c73;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* =========================================
+   MOOD DISTRIBUTION
+   ========================================= */
+
+.mood-list {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.mood-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 12px 14px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #f8fbf7 0%,
+            #f0f7ed 100%
+        );
+
+    border: 1px solid rgba(70, 125, 90, 0.06);
+    border-radius: 13px;
+
+    color: #49685f;
+
+    font-size: 14px;
+
+    transition:
+        transform 0.18s ease,
+        background 0.18s ease;
+}
+
+.mood-row:hover {
+    transform: translateX(2px);
+
+    background:
+        linear-gradient(
+            90deg,
+            #f3f9f0 0%,
+            #e6f3e1 100%
+        );
+}
+
+.mood-row strong {
+    min-width: 32px;
+
+    padding: 5px 9px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e5f4df,
+            #d2ebd0
+        );
+
+    border-radius: 999px;
+
+    color: #126044;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* =========================================
+   RECENT ENTRIES
+   ========================================= */
+
+.recent-card {
+    min-height: 190px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #f5faf2 65%,
+            #edf7e9 100%
+        );
+}
+
+.empty-state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 90px;
+
+    background: rgba(247, 251, 246, 0.8);
+
+    border: 1px dashed #cfdfd5;
+    border-radius: 14px;
+
+    color: #8da098;
+    font-size: 14px;
+}
+
+
+/* =========================================
+   SCROLLBAR
+   ========================================= */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f3f7f3;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c6d9ce;
+    border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a9c6b6;
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 900px) {
+
+    .dashboard-page {
+        width: min(100% - 30px, 1240px);
+    }
+
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    .dashboard-page {
+        width: calc(100% - 24px);
+        padding-top: 24px;
+    }
+
+    .dashboard-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .dashboard-header h1 {
+        font-size: 27px;
+    }
+
+    .header-user {
+        display: none;
+    }
+
+    .week-placeholder {
+        gap: 5px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .day-mood {
+        width: 42px;
+        height: 42px;
+
+        border-radius: 13px;
+
+        font-size: 21px;
+    }
+
+    .dashboard-card,
+    .summary-card {
+        border-radius: 17px;
+        padding: 19px;
+    }
+}
+/* =========================================
+   DASHBOARD CHARTS
+   ========================================= */
+
+/* ---------- Weekly Mood Chart ---------- */
+
+.mood-chart-card {
+    min-height: 420px;
+}
+
+.chart-container {
+    position: relative;
+
+    width: 100%;
+    height: 300px;
+
+    margin-top: 8px;
+    padding: 8px 4px 0;
+}
+
+
+/* ---------- Mood Distribution ---------- */
+
+.distribution-card {
+    min-height: 420px;
+}
+
+.donut-container {
+    position: relative;
+
+    width: 190px;
+    height: 190px;
+
+    margin: 0 auto 24px;
+}
+
+.donut-container canvas {
+    position: relative;
+    z-index: 1;
+}
+
+.donut-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    pointer-events: none;
+
+    z-index: 2;
+}
+
+.donut-center strong {
+    color: #0b6048;
+
+    font-size: 30px;
+    line-height: 1;
+
+    font-weight: 700;
+}
+
+.donut-center span {
+    margin-top: 5px;
+
+    color: #879b94;
+
+    font-size: 12px;
+}
+
+
+/* ---------- Mood Dots ---------- */
+
+.mood-row > span {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.mood-dot {
+    display: inline-block;
+
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+
+    flex-shrink: 0;
+}
+
+.mood-great {
+    background: #55a66f;
+}
+
+.mood-good {
+    background: #8bc985;
+}
+
+.mood-neutral {
+    background: #c8d99c;
+}
+
+.mood-anxious {
+    background: #e5c982;
+}
+
+.mood-sad {
+    background: #d89b8d;
+}
+
+
+/* ---------- Chart Card Enhancement ---------- */
+
+.mood-chart-card,
+.distribution-card {
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff 0%,
+            #fbfefb 55%,
+            #f3faf4 100%
+        );
+}
+
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+
+    .chart-container {
+        height: 280px;
+    }
+
+    .donut-container {
+        width: 175px;
+        height: 175px;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .mood-chart-card,
+    .distribution-card {
+        min-height: auto;
+    }
+
+    .chart-container {
+        height: 250px;
+    }
+
+    .donut-container {
+        width: 160px;
+        height: 160px;
+        margin-bottom: 20px;
+    }
+
+    .donut-center strong {
+        font-size: 26px;
+    }
+
+}
+/* Feeling Jar Dashboard link */
+a.sidebar-tool-button {
+    text-decoration: none;
+    color: inherit;
+}
+
+a.sidebar-tool-button:hover,
+a.sidebar-tool-button:focus,
+a.sidebar-tool-button:active,
+a.sidebar-tool-button:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+a.sidebar-tool-button *,
+a.sidebar-tool-button:hover * {
+    text-decoration: none;
+}

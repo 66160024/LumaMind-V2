@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Feeling Dashboard | LumaMind</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/dashboard.css') }}"
+    >
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div class="dashboard-page">
+
+    <!-- =========================
+         HEADER
+         ========================= -->
+    <header class="dashboard-header">
+
+        <div>
+            <a href="{{ url_for('home') }}" class="back-button">
+                ← กลับไปหน้าแชท
+            </a>
+
+            <h1>ภาพรวมความรู้สึก</h1>
+            <p>ดูบันทึกและภาพรวมความรู้สึกของคุณ</p>
+        </div>
+
+        <div class="header-user">
+            {{ username }}
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         SUMMARY
+         ========================= -->
+    <section class="summary-grid">
+
+        <div class="summary-card">
+
+            <span class="summary-label">
+                ความรู้สึกที่พบบ่อย
+            </span>
+
+            <div class="summary-value">
+
+                <span class="mood-icon">
+                    {{ most_common.emoji }}
+                </span>
+
+                <strong>
+                    {{ most_common.label }}
+                </strong>
+
+            </div>
+
+            <span class="summary-detail">
+                ในช่วง 7 วันที่ผ่านมา
+            </span>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <span class="summary-label">
+                บันทึกสัปดาห์นี้
+            </span>
+
+            <div class="summary-number">
+                {{ weekly_count }}
+            </div>
+
+            <span class="summary-detail">
+                รายการใน 7 วันล่าสุด
+            </span>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <span class="summary-label">
+                บันทึกทั้งหมด
+            </span>
+
+            <div class="summary-number">
+                {{ total_entries }}
+            </div>
+
+            <span class="summary-detail">
+                รายการ
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CHART AREA
+         ========================= -->
+    <section class="dashboard-grid">
+
+        <!-- WEEKLY CHART -->
+        <div class="dashboard-card mood-chart-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h2>ความรู้สึกในสัปดาห์นี้</h2>
+                    <p>แนวโน้มความรู้สึกในช่วง 7 วันล่าสุด</p>
+                </div>
+
+            </div>
+
+            <div class="chart-container">
+                <canvas id="weeklyMoodChart"></canvas>
+            </div>
+
+        </div>
+
+
+        <!-- DISTRIBUTION -->
+        <div class="dashboard-card distribution-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h2>สัดส่วนความรู้สึก</h2>
+                    <p>ในช่วง 7 วันล่าสุด</p>
+                </div>
+
+            </div>
+
+
+            <div class="donut-container">
+
+                <canvas id="moodDistributionChart"></canvas>
+
+                <div class="donut-center">
+
+                    <strong>
+                        {{ weekly_count }}
+                    </strong>
+
+                    <span>
+                        บันทึก
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="mood-list">
+
+                <div class="mood-row">
+                    <span>
+                        <span class="mood-dot mood-great"></span>
+                        😊 ดีมาก
+                    </span>
+
+                    <strong>
+                        {{ mood_counts.get("good", 0) }}
+                    </strong>
+                </div>
+
+
+                <div class="mood-row">
+                    <span>
+                        <span class="mood-dot mood-good"></span>
+                        😌 ดี
+                    </span>
+
+                    <strong>
+                        {{ mood_counts.get("calm", 0) }}
+                    </strong>
+                </div>
+
+
+                <div class="mood-row">
+                    <span>
+                        <span class="mood-dot mood-neutral"></span>
+                        😐 เฉย ๆ
+                    </span>
+
+                    <strong>
+                        {{ mood_counts.get("neutral", 0) }}
+                    </strong>
+                </div>
+
+
+                <div class="mood-row">
+                    <span>
+                        <span class="mood-dot mood-anxious"></span>
+                        😟 กังวล
+                    </span>
+
+                    <strong>
+                        {{ mood_counts.get("anxious", 0) }}
+                    </strong>
+                </div>
+
+
+                <div class="mood-row">
+                    <span>
+                        <span class="mood-dot mood-sad"></span>
+                        😔 เศร้า
+                    </span>
+
+                    <strong>
+                        {{ mood_counts.get("sad", 0) }}
+                    </strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         RECENT ENTRIES
+         ========================= -->
+    <section class="dashboard-card recent-card">
+
+        <div class="card-header">
+
+            <div>
+                <h2>บันทึกล่าสุด</h2>
+                <p>ความรู้สึกที่คุณบันทึกไว้</p>
+            </div>
+
+        </div>
+
+
+        {% if recent_entries %}
+
+            <div class="recent-list">
+
+                {% for entry in recent_entries %}
+
+                    <div class="recent-entry">
+
+                        <div class="recent-entry-mood">
+                            {{ entry.emoji }}
+                        </div>
+
+
+                        <div class="recent-entry-content">
+
+                            <div class="recent-entry-top">
+
+                                <strong>
+                                    {{ entry.label }}
+                                </strong>
+
+                                <span>
+                                    {{ entry.created_at }}
+                                </span>
+
+                            </div>
+
+
+                            <p>
+                                {{ entry.text }}
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <div class="empty-state">
+                ยังไม่มีข้อมูลสำหรับแสดง
+            </div>
+
+        {% endif %}
+
+    </section>
+
+</div>
+
+
+<!-- =========================
+     FLASK DATA
+     แยกออกจาก JavaScript
+     เพื่อไม่ให้ VS Code มอง Jinja เป็น JS Error
+     ========================= -->
+
+<script id="week-data" type="application/json">
+{{ week_data | tojson }}
+</script>
+
+<script id="mood-counts-data" type="application/json">
+{{ mood_counts | tojson }}
+</script>
+
+
+<!-- =========================
+     DASHBOARD JAVASCRIPT
+     ========================= -->
+
+<script>
+
+    const weekData = JSON.parse(
+        document
+            .getElementById("week-data")
+            .textContent
+    );
+
+
+    const moodCounts = JSON.parse(
+        document
+            .getElementById("mood-counts-data")
+            .textContent
+    );
+
+
+    /* =========================
+       MOOD CONFIG
+       ========================= */
+
+    const moodValues = {
+        good: 5,
+        calm: 4,
+        neutral: 3,
+        anxious: 2,
+        sad: 1
+    };
+
+
+    const moodNames = {
+        5: "ดีมาก",
+        4: "ดี",
+        3: "เฉย ๆ",
+        2: "กังวล",
+        1: "เศร้า"
+    };
+
+
+    /* =========================
+       WEEK DATA
+       ========================= */
+
+    const weeklyLabels = weekData.map(
+        function(item) {
+
+            return (
+                item.day +
+                " " +
+                item.date
+            );
+
+        }
+    );
+
+
+    const weeklyValues = weekData.map(
+        function(item) {
+
+            if (!item.mood) {
+                return null;
+            }
+
+            return moodValues[item.mood] || null;
+
+        }
+    );
+
+
+    /* =========================
+       WEEKLY LINE CHART
+       ========================= */
+
+    const weeklyCanvas =
+        document.getElementById(
+            "weeklyMoodChart"
+        );
+
+
+    new Chart(
+        weeklyCanvas,
+        {
+
+            type: "line",
+
+            data: {
+
+                labels: weeklyLabels,
+
+                datasets: [
+                    {
+
+                        label:
+                            "ระดับความรู้สึก",
+
+                        data:
+                            weeklyValues,
+
+                        borderColor:
+                            "#17765a",
+
+                        backgroundColor:
+                            "rgba(116, 190, 139, 0.16)",
+
+                        pointBackgroundColor:
+                            "#ffffff",
+
+                        pointBorderColor:
+                            "#17765a",
+
+                        pointBorderWidth:
+                            3,
+
+                        pointRadius:
+                            function(context) {
+
+                                if (
+                                    context.raw === null
+                                ) {
+                                    return 0;
+                                }
+
+                                return 5;
+
+                            },
+
+                        pointHoverRadius:
+                            7,
+
+                        borderWidth:
+                            3,
+
+                        tension:
+                            0.42,
+
+                        fill:
+                            true,
+
+                        spanGaps:
+                            false
+
+                    }
+                ]
+
+            },
+
+
+            options: {
+
+                responsive:
+                    true,
+
+                maintainAspectRatio:
+                    false,
+
+
+                plugins: {
+
+                    legend: {
+                        display: false
+                    },
+
+
+                    tooltip: {
+
+                        displayColors:
+                            false,
+
+                        callbacks: {
+
+                            label:
+                                function(context) {
+
+                                    if (
+                                        context.raw === null
+                                    ) {
+                                        return "ไม่มีบันทึก";
+                                    }
+
+                                    return (
+                                        moodNames[
+                                            context.raw
+                                        ] || ""
+                                    );
+
+                                }
+
+                        }
+
+                    }
+
+                },
+
+
+                scales: {
+
+                    x: {
+
+                        grid: {
+                            display: false
+                        },
+
+                        border: {
+                            display: false
+                        },
+
+                        ticks: {
+
+                            color:
+                                "#70877f",
+
+                            font: {
+                                size: 12,
+                                weight: "600"
+                            }
+
+                        }
+
+                    },
+
+
+                    y: {
+
+                        min: 1,
+                        max: 5,
+
+                        ticks: {
+
+                            stepSize:
+                                1,
+
+                            color:
+                                "#70877f",
+
+                            callback:
+                                function(value) {
+
+                                    return (
+                                        moodNames[value]
+                                        || ""
+                                    );
+
+                                }
+
+                        },
+
+                        grid: {
+                            color:
+                                "rgba(80, 120, 100, 0.08)"
+                        },
+
+                        border: {
+                            display: false
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+    );
+
+
+    /* =========================
+       DISTRIBUTION DATA
+       ========================= */
+
+    const distributionValues = [
+
+        moodCounts.good || 0,
+
+        moodCounts.calm || 0,
+
+        moodCounts.neutral || 0,
+
+        moodCounts.anxious || 0,
+
+        moodCounts.sad || 0
+
+    ];
+
+
+    const hasMoodData =
+        distributionValues.some(
+            function(value) {
+
+                return value > 0;
+
+            }
+        );
+
+
+    /* =========================
+       DOUGHNUT CHART
+       ========================= */
+
+    const distributionCanvas =
+        document.getElementById(
+            "moodDistributionChart"
+        );
+
+
+    new Chart(
+        distributionCanvas,
+        {
+
+            type:
+                "doughnut",
+
+
+            data: {
+
+                labels: [
+
+                    "ดีมาก",
+
+                    "ดี",
+
+                    "เฉย ๆ",
+
+                    "กังวล",
+
+                    "เศร้า"
+
+                ],
+
+
+                datasets: [
+                    {
+
+                        data:
+                            hasMoodData
+                                ? distributionValues
+                                : [1],
+
+
+                        backgroundColor:
+                            hasMoodData
+
+                                ? [
+                                    "#55a66f",
+                                    "#8bc985",
+                                    "#c8d99c",
+                                    "#e5c982",
+                                    "#d89b8d"
+                                ]
+
+                                : [
+                                    "#e7eee9"
+                                ],
+
+
+                        borderWidth:
+                            0,
+
+
+                        hoverOffset:
+                            hasMoodData
+                                ? 5
+                                : 0
+
+                    }
+                ]
+
+            },
+
+
+            options: {
+
+                responsive:
+                    true,
+
+                maintainAspectRatio:
+                    false,
+
+                cutout:
+                    "72%",
+
+
+                plugins: {
+
+                    legend: {
+                        display: false
+                    },
+
+
+                    tooltip: {
+
+                        enabled:
+                            hasMoodData,
+
+                        callbacks: {
+
+                            label:
+                                function(context) {
+
+                                    return (
+                                        context.label +
+                                        ": " +
+                                        context.raw +
+                                        " ครั้ง"
+                                    );
+
+                                }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+    );
+
+</script>
+
+</body>
+</html>
